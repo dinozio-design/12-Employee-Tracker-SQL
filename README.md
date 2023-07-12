@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-lightblue.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-In this week's Challenge I created a node js app to make it much easier for the employees to ....
+In this week's Challenge I created a node js app to make it much easier for the employer to manage departments, roles, and employees in the company.
 
 ## Table of Contents
 - [User-Story](#user-story)
