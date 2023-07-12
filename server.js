@@ -40,8 +40,9 @@ inquirer
       name: 'create_db',
       choices: ['create DataBase', 'phone', 'telekinesis'],
     }
-  ]).then(async (answers) {
+  ]).then( async (answers) => {
     //sql queries goe here
+    const answer = await answers;
     if (!answer) {
       return;
     } else {
