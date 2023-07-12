@@ -40,24 +40,14 @@ inquirer
       name: 'create_db',
       choices: ['create DataBase', 'phone', 'telekinesis'],
     }
-  ]).then( async (answers) => {
-    //sql queries goe here
-    const answer = await answers;
-    if (!answer) {
-      return;
-    } else {
-      db.query('SHOW DATABASES;', function (err, results) {
-        console.log(results);
-      });
-      db.query('CREATE DATABASE employees;', function (err, results) {
-        console.log(results);
-      });
-      db.query('USE employees;', function (err, results) {
-        console.log(results);
-      });
-    };
-  });
+  ]).then(async (answers) => {
+  //do something with the responses
+  //for example, call query nodes based on response, or open new inquirer
+  }
+  
 
+
+// to catch all unfulfilled requests
 app.use((req, res) => {
   res.status(404).end();
 });
