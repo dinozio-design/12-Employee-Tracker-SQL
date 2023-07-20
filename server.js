@@ -43,7 +43,7 @@ inquirer
   ]).then((data) => {
     //do something with the responses
     //for example, call query nodes based on response, or open new inquirer
-    const overallAction = data.overall.replace(/ /g, "");
+    const overallAction = data.overall.toLowerCase().replace(/ /g, "");
     console.log(overallAction);
   });
 
