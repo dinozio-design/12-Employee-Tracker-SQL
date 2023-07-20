@@ -16,15 +16,30 @@ const db = mysql.createConnection(
     user: 'root',
     // MySQL password
     password: 'cli$ession4My$ql',
-    database: 'employee'
+    database: 'employees_db'
   },
   console.log(`Connected to the database.`)
 );
+
 db.connect(async(err)=>{
   if (err){ throw err};
-  console.log(`Connected to server at ${db.threadId}`);
+  console.log(`Connected to db server at ${db.threadId}`);
+  userInput();
 })
-function userInput (){}
+function userInput (){
+  inquirer
+  .prompt([
+    {
+      type: 'list',
+      message: 'What woudl you like to do?',
+      name: 'overall',
+      choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
+    }
+  ]).then((data) => {
+    const overallAction = data.overall.replace(/ /g, "");
+    console.log(overallAction);
+  });
+}
 
 
 
