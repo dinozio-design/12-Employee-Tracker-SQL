@@ -21,27 +21,33 @@ const db = mysql.createConnection(
   console.log(`Connected to the database.`)
 );
 
-db.connect(async(err)=>{
-  if (err){ throw err};
-  console.log(`Connected to db server at ${db.threadId}`);
-  userInput();
-})
-function userInput (){
+async eeQuery (data){
+  
+}
+function userInput() {
   inquirer
-  .prompt([
-    {
-      type: 'list',
-      message: 'What woudl you like to do?',
-      name: 'overall',
-      choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
-    }
-  ]).then((data) => {
-    const overallAction = data.overall.replace(/ /g, "");
-    console.log(overallAction);
-  });
+    .prompt([
+      {
+        type: 'list',
+        message: 'What woudl you like to do?',
+        name: 'overall',
+        choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
+      }
+    ]).then((data) => {
+    eeQuery(data);
+    });
 }
 
-
+/*
+          if (err) {
+            reults.status(500).json({ error: err.message });
+            return;
+          }
+          res.json({
+            message: 'success',
+            data: rows
+          });
+*/
 
 // to catch all unfulfilled requests
 app.use((req, res) => {
@@ -51,3 +57,4 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+userInput();
