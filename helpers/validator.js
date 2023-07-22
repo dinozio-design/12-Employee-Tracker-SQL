@@ -32,6 +32,9 @@ const validate = (input,db) => {
       case "adddepartment":
         //querry database here for all ee's
         console.log(input);
+        break;
+        case "exit":
+            process.exit();
     };
 }
 
