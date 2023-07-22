@@ -1,6 +1,7 @@
 //requiring resources
 const mysql = require('mysql2');
 const userInput = require('./helpers/userInput');
+const viewAllEmployees= require('./helpers/query');
 
 const db = mysql.createConnection(
   {
@@ -16,12 +17,12 @@ db.connect(async (err) => {
 });
 const tracker = async () => {
   const input = await userInput();
-    let closeTheApp = false;
+    // let closeTheApp = false;
   // while (!closeTheApp) {
     switch (input) {
       case "viewallemployees":
         //querry database here for all ee's
-        console.log(input);
+        viewAllEmployees(db);
         break;
       case "addemployee":
         //querry database here for all ee's
