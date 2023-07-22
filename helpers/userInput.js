@@ -10,10 +10,7 @@ const primaryQs = [{
 
 const userInput = async(questions) => {
   return await   inquirer
-  .prompt(primaryQs).then((data) => {
-    const primaryAction = data.overall.replace(/ /g, "").toLowerCase();
-    console.log(primaryAction);
-  });
+  .prompt(primaryQs);
 }
 // const addEmployee
 
