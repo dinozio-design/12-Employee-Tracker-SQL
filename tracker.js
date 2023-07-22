@@ -1,8 +1,5 @@
 //requiring resources
-const inquirer = require('inquirer');
 const mysql = require('mysql2');
-
-//I will rename this to smoething more appropreate
 const userInput = require('./helpers/userInput');
 
 const db = mysql.createConnection(
@@ -13,14 +10,43 @@ const db = mysql.createConnection(
     database: 'employees_db'
   }
 );
-
 db.connect(async (err) => {
   if (err) { throw err };
   console.log(`Connected to db thread ${db.threadId}`);
 });
 const tracker = async () => {
-  const input  = await userInput();
-  console.log(input);
+  const input = await userInput();
+    let closeTheApp = false;
+  // while (!closeTheApp) {
+    switch (input) {
+      case "viewallemployees":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "addemployee":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "updateemployeerole":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "viewallroles":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "addrole":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "viewalldepartments":
+        //querry database here for all ee's
+        console.log(input);
+        break;
+      case "adddepartment":
+        //querry database here for all ee's
+        console.log(input);
+    };
 };
 
 tracker();
