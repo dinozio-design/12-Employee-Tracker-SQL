@@ -1,4 +1,4 @@
-const viewAllEmployees= require('./query');
+const {viewAllEmployees,viewAllRoles,viewAllDepartments}= require('./query');
 
 const validate = (input,db) => {
     // let closeTheApp = false;
@@ -26,6 +26,7 @@ const validate = (input,db) => {
         break;
       case "viewalldepartments":
         //querry database here for all ee's
+        viewAllDepartments(db);
         console.log(input);
         break;
       case "adddepartment":

@@ -22,5 +22,7 @@ async function tracker() {
   validate(input,db);
 }
 
-module.exports = tracker();
+tracker();
+
+exports.tracker = tracker;
 
