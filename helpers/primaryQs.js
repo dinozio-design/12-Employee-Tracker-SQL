@@ -1,4 +1,4 @@
-const questions = [
+const primaryQs = [
     {
     type: 'list',
     message: 'What woudl you like to do?',
@@ -6,5 +6,6 @@ const questions = [
     choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
   }
 ];
+// const addEmployee
 
-module.exports = questions;
+module.exports = primaryQs;
