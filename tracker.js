@@ -28,7 +28,7 @@ db.connect(async (err) => {
 const tracker = async () => {
   const input  = await userInput(primaryQs);
   // const primaryAction = input.overall.replace(/ /g, "").toLowerCase();
-  console.log(typeof input);
+  console.log(input);
 };
 
 tracker();
