@@ -15,8 +15,7 @@ db.connect(async (err) => {
   if (err) { throw err };
   console.log(`Connected to db thread ${db.threadId}`);
 });
-const tracker = async () => {
-  const input = await userInput();
+const trackers = (input) => {
     // let closeTheApp = false;
   // while (!closeTheApp) {
     switch (input) {
@@ -34,7 +33,7 @@ const tracker = async () => {
         break;
       case "viewallroles":
         //querry database here for all ee's
-        console.log(input);
+        viewAllRoles(db);
         break;
       case "addrole":
         //querry database here for all ee's
@@ -48,8 +47,12 @@ const tracker = async () => {
         //querry database here for all ee's
         console.log(input);
     };
-};
-
-tracker();
+}
+async function isTracking() {
+  const input = await userInput();
+  trackers(input);
+}
+// isTracking();
+module.exports = isTracking();
 
 
