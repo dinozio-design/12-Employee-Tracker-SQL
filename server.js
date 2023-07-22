@@ -21,6 +21,9 @@ const db = mysql.createConnection(
   console.log(`Connected to the database.`)
 );
 
+async eeQuery (data){
+  
+}
 function userInput() {
   inquirer
     .prompt([
@@ -31,10 +34,21 @@ function userInput() {
         choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department'],
       }
     ]).then((data) => {
-    // do something here
-
+    eeQuery(data);
     });
 }
+
+/*
+          if (err) {
+            reults.status(500).json({ error: err.message });
+            return;
+          }
+          res.json({
+            message: 'success',
+            data: rows
+          });
+*/
+
 // to catch all unfulfilled requests
 app.use((req, res) => {
   res.status(404).end();
@@ -43,5 +57,4 @@ app.use((req, res) => {
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
-
 userInput();
