@@ -1,11 +1,11 @@
-const mysql = require('mysql2');
-const tracker = require('../tracker');
+// const mysql = require('mysql2');
+const tracker = require('../tracker.js');
 
 async function viewAllEmployees(db) {
     try {
         const result = await db.promise().query('SELECT * FROM employee');
         console.table(result[0]);
-        tracker.isTracking();
+        tracker();
     } catch (err) {
         console.error(err);
     }
