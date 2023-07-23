@@ -25,7 +25,7 @@ const roleQs=[{
   type: 'list',
   message: 'Which department does it belong to?',
   name: 'department',
-  choices: ['1','2','3'],
+  choices: [],
 }];
 
 const userInput = async() => {
@@ -40,7 +40,11 @@ const departmentInput = async() =>{
   return await inquirer.prompt(departmentQs);
 }
 
-const roleInput = async()=>{
+const roleInput = async(roleChoices)=>{
+  roleChoices.forEach(element => {
+    roleQs[2].choices.push(element);
+  });
+  console.log(roleQs[2].choices);
   return await inquirer.prompt(roleQs);
 }
 module.exports = {userInput,departmentInput,roleInput};

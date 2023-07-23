@@ -54,11 +54,19 @@ async function addDepartment(db, reponse) {
 
 async function existingRoles(db) {
     try {
-        const result = await db.promise().query('SELECT title FROM role');
+        const result = await db.promise().query('SELECT title FROM department');
+        return result[0];
+    } catch (err) {
+        console.error(err);
+    }
+}
+async function existingDepartments(db) {
+    try {
+        const result = await db.promise().query('SELECT dept_name FROM department');
         return result[0];
     } catch (err) {
         console.error(err);
     }
 }
 
-module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles };
+module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments };

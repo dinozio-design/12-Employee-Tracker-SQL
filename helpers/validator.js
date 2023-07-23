@@ -1,5 +1,5 @@
-const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles } = require('./query');
-const { departmentInput } = require('./userInput');
+const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments } = require('./query');
+const { departmentInput,roleInput } = require('./userInput');
 
 const validate = async (input, db) => {
     // let closeTheApp = false;
@@ -23,17 +23,14 @@ const validate = async (input, db) => {
             break;
         case "addrole":
             //querry database here for all ee's
-            const roleStack = await existingRoles(db);
-            // const extracValues = ({title})=>[title];
-            // roleChoices = roleStack.map(extracValues);
+            const roleStack = await existingDepartments(db);
             let roleChoices = [];
             roleStack.forEach(element => {
                 roleChoices.push(element.title);
             });
-
-
-            console.log(roleStack);
-            console.log(roleChoices);
+            // console.log(roleChoices);
+            let roleQuest = await roleInput(roleChoices);
+            console.log(roleQuest);
 
             break;
         case "viewalldepartments":
