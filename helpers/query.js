@@ -13,7 +13,7 @@ async function viewAllEmployees(db) {
 
 async function viewAllRoles(db) {
     try {
-        const result = await db.promise().query('SELECT * FROM role');
+        const result = await db.promise().query('SELECT role.id,role.title,role.salary, department.dept_name  FROM role JOIN department ON role.dept_id = department.id');
         console.table(result[0]);
         tracks.tracker();
     } catch (err) {
