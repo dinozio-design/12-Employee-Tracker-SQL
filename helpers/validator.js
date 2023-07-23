@@ -28,11 +28,17 @@ const validate = async (input, db) => {
             roleStack.forEach(element => {
                 roleChoices.push(element.dept_name);
             });
-            // console.log(roleChoices);
+            console.log("1", roleChoices);
             let roleQuest = await roleInput(roleChoices);
-            // console.log(roleQuest);
-            addRole(roleQuest);
-            console.log(`New department has been added `, roleQuest);
+            let depName = roleQuest.department;
+
+            roleQuest.department = roleChoices.indexOf(depName)+1;
+
+            console.log(roleQuest.department);
+            console.log(roleQuest);
+
+            addRole(db, roleQuest);
+            console.log(`New role has been added`, roleQuest.title);
 
             break;
         case "viewalldepartments":

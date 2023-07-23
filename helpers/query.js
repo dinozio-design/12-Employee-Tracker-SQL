@@ -55,10 +55,10 @@ async function addDepartment(db, reponse) {
 async function addRole(db, response) {
 
     try {
-console.log(response.department);
-        // const result = await db.promise().query('INSERT INTO role (title, salary, dept_id) VALUES(?,?,?)', [response.title,response.salary,indexof(response.department)]);
-        // console.table(result[0]);
-        // tracks.tracker();
+// console.log("query line 58",response);
+        const result = await db.promise().query('INSERT INTO role (title, salary, dept_id) VALUES(?,?,?)', [response.title,response.salary,response.department]);
+        console.table(result[0]);
+        tracks.tracker();
     } catch (err) {
         console.error(err);
     }
