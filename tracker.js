@@ -10,11 +10,12 @@ const db = mysql.createConnection(
     user: 'root',
     password: 'cli$ession4My$ql',
     database: 'employees_db'
-  }
+  },
+  console.log(`connected to employees_db`)
 );
 db.connect(async (err) => {
   if (err) { throw err };
-  console.log(`Connected to db thread ${db.threadId}`);
+  // console.log(`Connected to db thread ${db.threadId}`);
 });
 
 async function tracker() {

@@ -30,7 +30,7 @@ const validate = (input,db) => {
         console.log(input);
         break;
       case "adddepartment":
-        //querry database here for all ee's
+        // start a new prompt for secondary question
         console.log(input);
         break;
         case "exit":

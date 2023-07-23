@@ -31,4 +31,26 @@ async function viewAllDepartments(db){
     }
 }
 
+async function viewAllEmployees(db) {
+    try {
+        const result = await db.promise().query('SELECT * FROM employee');
+        console.table(result[0]);
+        tracks.tracker();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+async function addDepartment(db) {
+
+    try {
+        // const result = await db.promise().query('SELECT * FROM employee');
+        console.table(result[0]);
+        tracks.tracker();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 module.exports = {viewAllEmployees,viewAllRoles,viewAllDepartments};
