@@ -1,4 +1,5 @@
-const {viewAllEmployees,viewAllRoles,viewAllDepartments}= require('./query');
+const {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment}= require('./query');
+const {departmentInput} = require('./userInput');
 
 const validate = (input,db) => {
     // let closeTheApp = false;
@@ -31,7 +32,9 @@ const validate = (input,db) => {
         break;
       case "adddepartment":
         // start a new prompt for secondary question
-        console.log(input);
+        // const response = departmentInput();
+        // addDepartment(db,departmentInput);
+        console.log(departmentInput);
         break;
         case "exit":
             process.exit();

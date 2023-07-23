@@ -1,6 +1,6 @@
 //requiring resources
 const mysql = require('mysql2');
-const userInput = require('./helpers/userInput');
+const {userInput} = require('./helpers/userInput');
 
 const validate = require('./helpers/validator');
 

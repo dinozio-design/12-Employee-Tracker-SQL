@@ -42,10 +42,10 @@ async function viewAllEmployees(db) {
 }
 
 
-async function addDepartment(db) {
+async function addDepartment(db,reponse) {
 
     try {
-        // const result = await db.promise().query('SELECT * FROM employee');
+        const result = await db.promise().query('INSERT INTO department(name) VALUES(?)',[reponse.department]);
         console.table(result[0]);
         tracks.tracker();
     } catch (err) {
@@ -53,4 +53,4 @@ async function addDepartment(db) {
     }
 }
 
-module.exports = {viewAllEmployees,viewAllRoles,viewAllDepartments};
+module.exports = {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment};
