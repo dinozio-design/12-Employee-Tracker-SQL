@@ -21,7 +21,7 @@ async function viewAllRoles(db) {
     }
 }
 
-async function viewAllDepartments(db){
+async function viewAllDepartments(db) {
     try {
         const result = await db.promise().query('SELECT * FROM department');
         console.table(result[0]);
@@ -41,11 +41,10 @@ async function viewAllEmployees(db) {
     }
 }
 
-
-async function addDepartment(db,reponse) {
+async function addDepartment(db, reponse) {
 
     try {
-        const result = await db.promise().query('INSERT INTO department(dept_name) VALUES(?)',[reponse.department]);
+        const result = await db.promise().query('INSERT INTO department(dept_name) VALUES(?)', [reponse.department]);
         console.table(result[0]);
         tracks.tracker();
     } catch (err) {
@@ -53,4 +52,16 @@ async function addDepartment(db,reponse) {
     }
 }
 
-module.exports = {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment};
+async function existingRoles(db) {
+    try {
+        const result = await db.promise().query('SELECT title FROM role');
+        // console.table(result[0]);
+        // console.log(result[0]);
+        return result[0];
+        // tracks.tracker();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles };

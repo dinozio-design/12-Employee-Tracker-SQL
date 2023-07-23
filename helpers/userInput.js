@@ -13,6 +13,21 @@ const departmentQs =[{
   name: 'department',
 }];
 
+const roleQs=[{
+  type: 'input',
+  message: 'What is the role title?',
+  name: 'title',
+},{
+  type: 'input',
+  message: 'What is the allocated salary?',
+  name: 'salary',
+},{
+  type: 'list',
+  message: 'Which department does it belong to?',
+  name: 'department',
+  choices: ['1','2','3'],
+}];
+
 const userInput = async() => {
   const ask = await   inquirer
   .prompt(primaryQs)
@@ -25,5 +40,7 @@ const departmentInput = async() =>{
   return await inquirer.prompt(departmentQs);
 }
 
-
-module.exports = {userInput,departmentInput};
+const roleInput = async()=>{
+  return await inquirer.prompt(roleQs);
+}
+module.exports = {userInput,departmentInput,roleInput};

@@ -1,4 +1,4 @@
-const {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment}= require('./query');
+const {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment,existingRoles}= require('./query');
 const {departmentInput} = require('./userInput');
 
 const validate = async (input,db) => {
@@ -23,7 +23,8 @@ const validate = async (input,db) => {
         break;
       case "addrole":
         //querry database here for all ee's
-        console.log(input);
+        let roleStack = await existingRoles(db);
+        console.log(roleStack);
         break;
       case "viewalldepartments":
         //querry database here for all ee's
@@ -33,7 +34,7 @@ const validate = async (input,db) => {
       case "adddepartment":
         let response = await departmentInput ();
         addDepartment(db,response)
-        // console.log(response);
+        console.log(response);
         break;
         case "exit":
             process.exit();
