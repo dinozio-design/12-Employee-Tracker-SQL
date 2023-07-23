@@ -1,7 +1,7 @@
 const {viewAllEmployees,viewAllRoles,viewAllDepartments,addDepartment}= require('./query');
 const {departmentInput} = require('./userInput');
 
-const validate = (input,db) => {
+const validate = async (input,db) => {
     // let closeTheApp = false;
   // while (!closeTheApp) {
     switch (input) {
@@ -31,10 +31,9 @@ const validate = (input,db) => {
         console.log(input);
         break;
       case "adddepartment":
-        // start a new prompt for secondary question
-        // const response = departmentInput();
-        // addDepartment(db,departmentInput);
-        console.log(departmentInput);
+        let response = await departmentInput ();
+        addDepartment(db,response)
+        // console.log(response);
         break;
         case "exit":
             process.exit();

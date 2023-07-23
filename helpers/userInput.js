@@ -22,13 +22,8 @@ const userInput = async() => {
 }
 
 const departmentInput = async() =>{
-  // const ask = await   inquirer
   return await inquirer.prompt(departmentQs);
-  // const userChoice = ask.overall.replace(/ /g, "").toLowerCase();
-  // // console.log(userChoice, 'hi');
-  // return userChoice;
 }
 
-// const addEmployee
 
 module.exports = {userInput,departmentInput};

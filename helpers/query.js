@@ -45,7 +45,7 @@ async function viewAllEmployees(db) {
 async function addDepartment(db,reponse) {
 
     try {
-        const result = await db.promise().query('INSERT INTO department(name) VALUES(?)',[reponse.department]);
+        const result = await db.promise().query('INSERT INTO department(dept_name) VALUES(?)',[reponse.department]);
         console.table(result[0]);
         tracks.tracker();
     } catch (err) {
