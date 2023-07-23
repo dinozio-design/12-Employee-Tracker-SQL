@@ -1,4 +1,4 @@
-const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments } = require('./query');
+const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole } = require('./query');
 const { departmentInput,roleInput } = require('./userInput');
 
 const validate = async (input, db) => {
@@ -26,11 +26,13 @@ const validate = async (input, db) => {
             const roleStack = await existingDepartments(db);
             let roleChoices = [];
             roleStack.forEach(element => {
-                roleChoices.push(element.title);
+                roleChoices.push(element.dept_name);
             });
             // console.log(roleChoices);
             let roleQuest = await roleInput(roleChoices);
-            console.log(roleQuest);
+            // console.log(roleQuest);
+            addRole(roleQuest);
+            console.log(`New department has been added `, roleQuest);
 
             break;
         case "viewalldepartments":
@@ -40,8 +42,8 @@ const validate = async (input, db) => {
             break;
         case "adddepartment":
             let response = await departmentInput();
-            addDepartment(db, response)
-            console.log(response);
+            addDepartment(db, response);
+            console.log(`New department has been added `, response);
             break;
         case "exit":
             process.exit();

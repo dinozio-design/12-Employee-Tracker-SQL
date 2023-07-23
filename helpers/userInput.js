@@ -25,7 +25,7 @@ const roleQs=[{
   type: 'list',
   message: 'Which department does it belong to?',
   name: 'department',
-  choices: [],
+  choices: [1,2,3,4,5,6,7],
 }];
 
 const userInput = async() => {

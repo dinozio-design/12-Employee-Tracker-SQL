@@ -52,6 +52,18 @@ async function addDepartment(db, reponse) {
     }
 }
 
+async function addRole(db, response) {
+
+    try {
+console.log(response.department);
+        // const result = await db.promise().query('INSERT INTO role (title, salary, dept_id) VALUES(?,?,?)', [response.title,response.salary,indexof(response.department)]);
+        // console.table(result[0]);
+        // tracks.tracker();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
 async function existingRoles(db) {
     try {
         const result = await db.promise().query('SELECT title FROM department');
@@ -69,4 +81,4 @@ async function existingDepartments(db) {
     }
 }
 
-module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments };
+module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole };
