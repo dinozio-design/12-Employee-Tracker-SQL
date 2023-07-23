@@ -55,10 +55,7 @@ async function addDepartment(db, reponse) {
 async function existingRoles(db) {
     try {
         const result = await db.promise().query('SELECT title FROM role');
-        // console.table(result[0]);
-        // console.log(result[0]);
         return result[0];
-        // tracks.tracker();
     } catch (err) {
         console.error(err);
     }
