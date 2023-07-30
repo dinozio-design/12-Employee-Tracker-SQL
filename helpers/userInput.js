@@ -73,9 +73,12 @@ const roleInput = async (depChoices) => {
   return await inquirer.prompt(roleQs);
 }
 
-const employeeInput = async (roleChoices)=>{
+const employeeInput = async (roleChoices, managerChoices)=>{
   roleChoices.forEach(element =>{
     employeeQs[2].choices.push(element);
+  });
+  managerChoices.forEach(element =>{
+    employeeQs[3].choices.push(element);
   });
   return await inquirer.prompt(employeeQs);
 }

@@ -54,7 +54,7 @@ async function addDepartment(db, reponse) {
 
 async function addEmployee (db, response) {
     try {
-        const result = await db.promise().query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES(?,?,?)', [response.title,response.salary,response.department]);
+        const result = await db.promise().query('INSERT INTO employee (first_name, last_name, role_id, manager_id) VALUES(?,?,?,?)', [response.first_name,response.last_name,response.role,response.manager]);
         console.table(result[0]);
         tracks.tracker();
     } catch (err) {
@@ -81,6 +81,14 @@ async function existingRoles(db) {
         console.error(err);
     }
 }
+async function existingEmployees(db) {
+    try {
+        const result = await db.promise().query('SELECT last_name FROM employee');
+        return result[0];
+    } catch (err) {
+        console.error(err);
+    }
+}
 async function existingDepartments(db) {
     try {
         const result = await db.promise().query('SELECT dept_name FROM department');
@@ -90,4 +98,4 @@ async function existingDepartments(db) {
     }
 }
 
-module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole, addEmployee };
+module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole, addEmployee, existingEmployees };

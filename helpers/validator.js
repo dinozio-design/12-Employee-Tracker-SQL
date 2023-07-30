@@ -1,4 +1,4 @@
-const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole , addEmployee} = require('./query');
+const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole , addEmployee, existingEmployees} = require('./query');
 const { departmentInput,roleInput, employeeInput } = require('./userInput');
 
 const validate = async (input, db) => {
@@ -16,13 +16,21 @@ const validate = async (input, db) => {
             roleStack.forEach(element => {
                 roleChoices.push(element.title);
             });
+            const managerStack = await existingEmployees(db);
+            let managerChoices = [];
+            managerStack.forEach(element =>{
+                managerChoices.push(element.last_name);
+            });
+
 // console.log("1", roleChoices);
-            let employeeQuest = await employeeInput(roleChoices);
-            console.log(employeeQuest);
+            let employeeQuest = await employeeInput(roleChoices, managerChoices);
             let roleName = employeeQuest.role;
-
+            let managerName = employeeQuest.manager;
+            
             employeeQuest.role = roleChoices.indexOf(roleName)+1;
-
+            employeeQuest.manager = managerChoices.indexOf(managerName)+1;
+            
+            // console.log(employeeQuest);
             addEmployee(db, employeeQuest);
             console.log(`New employee has been added : `, employeeQuest.last_name);
             break;
