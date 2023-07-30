@@ -7,44 +7,77 @@ const primaryQs = [{
   choices: ['View All Employees', 'Add Employee', 'Update Employee Role', 'View All Roles', 'Add Role', 'View All Departments', 'Add Department', 'exit'],
 }];
 
-const departmentQs =[{
+const departmentQs = [{
   type: 'input',
   message: 'What is the name of the department?',
   name: 'department',
 }];
 
-const roleQs=[{
-  type: 'input',
-  message: 'What is the role title?',
-  name: 'title',
-},{
-  type: 'input',
-  message: 'What is the allocated salary?',
-  name: 'salary',
-},{
-  type: 'list',
-  message: 'Which department does it belong to?',
-  name: 'department',
-  choices: [],
-}];
+const employeeQs = [
+  {
+    type: 'input',
+    message: 'What is the First name of the employee?',
+    name: 'first_name'
+  }, {
+    type: 'input',
+    message: 'What is the Last name of the employee?',
+    name: 'last_name'
+  }, {
+    type: 'list',
+    message: 'What is the role of the employee?',
+    name: 'role',
+    choices: [],
+  },
+  {
+    type: 'list',
+    message: 'Who is the manager of the employee?',
+    name: 'manager',
+    choices: [],
+  }
+];
 
-const userInput = async() => {
-  const ask = await   inquirer
-  .prompt(primaryQs)
+const roleQs = [
+  {
+    type: 'input',
+    message: 'What is the role title?',
+    name: 'title',
+  }, {
+    type: 'input',
+    message: 'What is the allocated salary?',
+    name: 'salary',
+  }, {
+    type: 'list',
+    message: 'Which department does it belong to?',
+    name: 'department',
+    choices: [],
+  }
+];
+
+const userInput = async () => {
+  const ask = await inquirer
+    .prompt(primaryQs)
   const userChoice = ask.overall.replace(/ /g, "").toLowerCase();
   // console.log(userChoice, 'hi');
   return userChoice;
 }
 
-const departmentInput = async() =>{
+const departmentInput = async () => {
   return await inquirer.prompt(departmentQs);
 }
 
-const roleInput = async(roleChoices)=>{
-  roleChoices.forEach(element => {
+const roleInput = async (depChoices) => {
+  depChoices.forEach(element => {
     roleQs[2].choices.push(element);
   });
   // console.log(roleQs[2].choices);
   return await inquirer.prompt(roleQs);
 }
-module.exports = {userInput,departmentInput,roleInput};
+
+const employeeInput = async (roleChoices)=>{
+  roleChoices.forEach(element =>{
+    employeeQs[2].choices.push(element);
+  });
+  return await inquirer.prompt(employeeQs);
+}
+
+module.exports = { userInput, departmentInput, roleInput, employeeInput };

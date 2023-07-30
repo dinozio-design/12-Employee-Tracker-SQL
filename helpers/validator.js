@@ -1,5 +1,5 @@
-const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole } = require('./query');
-const { departmentInput,roleInput } = require('./userInput');
+const { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole , addEmployee} = require('./query');
+const { departmentInput,roleInput, employeeInput } = require('./userInput');
 
 const validate = async (input, db) => {
     // let closeTheApp = false;
@@ -11,7 +11,20 @@ const validate = async (input, db) => {
             break;
         case "addemployee":
             //querry database here for all ee's
-            console.log(input);
+            const roleStack = await existingRoles(db);
+            let roleChoices = [];
+            roleStack.forEach(element => {
+                roleChoices.push(element.title);
+            });
+// console.log("1", roleChoices);
+            let employeeQuest = await employeeInput(roleChoices);
+            console.log(employeeQuest);
+            let roleName = employeeQuest.role;
+
+            employeeQuest.role = roleChoices.indexOf(roleName)+1;
+
+            addEmployee(db, employeeQuest);
+            console.log(`New employee has been added : `, employeeQuest.last_name);
             break;
         case "updateemployeerole":
             //querry database here for all ee's
@@ -23,28 +36,28 @@ const validate = async (input, db) => {
             break;
         case "addrole":
             //querry database here for all ee's
-            const roleStack = await existingDepartments(db);
-            let roleChoices = [];
-            roleStack.forEach(element => {
-                roleChoices.push(element.dept_name);
+            const depStack = await existingDepartments(db);
+            let depChoices = [];
+            depStack.forEach(element => {
+                depChoices.push(element.dept_name);
             });
-            console.log("1", roleChoices);
-            let roleQuest = await roleInput(roleChoices);
+            
+            let roleQuest = await roleInput(depChoices);
             let depName = roleQuest.department;
 
-            roleQuest.department = roleChoices.indexOf(depName)+1;
+            roleQuest.department = depChoices.indexOf(depName)+1;
 
-            console.log(roleQuest.department);
-            console.log(roleQuest);
+            // console.log(roleQuest.department);
+            // console.log(roleQuest);
 
             addRole(db, roleQuest);
-            console.log(`New role has been added`, roleQuest.title);
+            console.log(`New role has been added : `, roleQuest.title);
 
             break;
         case "viewalldepartments":
             //querry database here for all ee's
             viewAllDepartments(db);
-            console.log(input);
+            // console.log(input);
             break;
         case "adddepartment":
             let response = await departmentInput();
