@@ -47,10 +47,7 @@ THEN I am prompted to select an employee to update and their new role and this i
 ```
 
 ## Installation
-You will need to utilise inquirer, and to do so, simply `npm i` then head on to use the app.
-
-![Mock Up of the way main page and note pages look”](./mock-up/MyApp01.PNG)
-![After clicking save, new note is added on the left”](./mock-up/MyApp02.PNG)
+You will need to utilise inquirer, and to do so, simply `npm i` then head on to run the `tracker.js` to start the app.
 
 
 ## Usage
@@ -63,7 +60,7 @@ This app is covered under MIT license. For details and limitations of this licen
 
 ## Contributing
 If you would like to share your feedback and/or contribute your best practices to make our code better, feel free to get in touch with us via:
-  GitHub: [11-Note-Taker-ExpressJS - link](https://github.com/dinozio-design/11-Note-Taker-ExpressJS)<br>
+  GitHub: [12 - Employee Tracker - SQL - link](https://github.com/dinozio-design/12-Employee-Tracker-SQL)<br>
 
 ## Test
 We are using jest for testing the development of the functions. No test have been written for this application yet.
@@ -75,7 +72,8 @@ If you have any questions, you can email them to me.
 
 ### Deployed Links
 
-<!-- 1. You can find the link to the deployed application **here:** <br> [Note Taker - Heroku link](https://serene-wave-69834-5e095d541a17.herokuapp.com/) -->
+1. You can find the video walkthrough of a typical user flow of the application **here:** <br>
+[12 - Employee Tracker - SQL - vid 1](https://drive.google.com/file/d/1e2YqTp9xwSMpd87m7aM-Vn1WWebHmbXy/view)<br>
 
 2. You can find the URL of my GitHub repository that contains this code **here:** <br>[GitHub Repo - link](https://github.com/dinozio-design/12-Employee-Tracker-SQL)
 
