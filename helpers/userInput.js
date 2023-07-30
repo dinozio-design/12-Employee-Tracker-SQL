@@ -53,6 +53,21 @@ const roleQs = [
   }
 ];
 
+const roleUpdateQs = [
+  {
+    type: 'list',
+    message: 'Whose role do you want to update?',
+    name: 'employee',
+    choices: [],
+  },
+  {
+    type: 'list',
+    message: 'Select the new role?',
+    name: 'role',
+    choices: [],
+  }
+];
+
 const userInput = async () => {
   const ask = await inquirer
     .prompt(primaryQs)
@@ -73,14 +88,24 @@ const roleInput = async (depChoices) => {
   return await inquirer.prompt(roleQs);
 }
 
-const employeeInput = async (roleChoices, managerChoices)=>{
-  roleChoices.forEach(element =>{
+const employeeInput = async (roleChoices, managerChoices) => {
+  roleChoices.forEach(element => {
     employeeQs[2].choices.push(element);
   });
-  managerChoices.forEach(element =>{
+  managerChoices.forEach(element => {
     employeeQs[3].choices.push(element);
   });
   return await inquirer.prompt(employeeQs);
 }
 
-module.exports = { userInput, departmentInput, roleInput, employeeInput };
+const employeeRoleUpdate = async (eeNames, eeRoles) => {
+  eeNames.forEach(element => {
+    roleUpdateQs[0].choices.push(element);
+  });
+  eeRoles.forEach(element =>{
+    roleUpdateQs[1].choices.push(element);
+  });
+  return await inquirer.prompt(roleUpdateQs);
+}
+
+module.exports = { userInput, departmentInput, roleInput, employeeInput, employeeRoleUpdate };

@@ -98,4 +98,24 @@ async function existingDepartments(db) {
     }
 }
 
-module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole, addEmployee, existingEmployees };
+async function employeeName (db){
+    try {
+        const result = await db.promise().query('SELECT last_name FROM employee');
+        return result[0];
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+
+async function updateRole(db,response){
+    try {
+        console.log(response);
+        const result = await db.promise().query('UPDATE employee SET role_id=? WHERE last_name=?', [response.role, response.employee]);
+        tracks.tracker();
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+module.exports = { viewAllEmployees, viewAllRoles, viewAllDepartments, addDepartment, existingRoles,existingDepartments,addRole, addEmployee, existingEmployees, employeeName , updateRole};
